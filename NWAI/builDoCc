@@ -1,0 +1,33 @@
+FROM ubuntu:20.04
+
+EXPOSE 80
+EXPOSE 443
+EXPOSE 3306
+EXPOSE 6379
+
+ENV DEBIAN_FRONTEND noninteractive
+
+#Update your System
+
+RUN apt update
+
+#RUN apt install debconf-utils -y
+RUN DEBIAN_FRONTEND=noninteractive apt upgrade -y
+
+RUN apt install -y
+
+#Install sudo to enable running programs with security privileges
+RUN DEBIAN_FRONTEND=noninteractive apt install sudo cron -y
+
+#vim
+RUN DEBIAN_FRONTEND=noninteractive apt install vim -y
+
+#ownCloud Quick Installation script 10.9.1 
+COPY ./installationoCc.sh /
+COPY ./startup.sh /
+RUN chmod +x /installationoCc.sh
+RUN chmod +x /startup.sh
+RUN bash -x ./installationoCc.sh
+
+#Install ownCloud
+CMD bash -x ./startup.sh 

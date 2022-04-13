@@ -1,0 +1,29 @@
+#Select a base oCc will run on
+FROM ubuntu:20.04
+
+ENV DEBIAN_FRONTEND noninteractive
+
+#Expose Port for https http and MySQL/Mariadb
+EXPOSE 80 443 3306
+
+
+#Update your System
+RUN ENV DEBIAN_FRONTEND=noninteractive apt update
+RUN DEBIAN_FRONTEND=noninteractive apt upgrade -y
+
+#Install sudo to enable running programs with security privileges
+RUN ENV DEBIAN_FRONTEND=noninteracive apt install sudo -y
+
+#Commandline Application for systemd to send commands 
+RUN DEBIAN_FRONTEND=noninteracive apt install systemctl -y
+
+#Set the timezone
+RUN DEBIAN_FRONTEND=noninteracive apt install tzdata -y  
+
+#ownCloud Quick Installation script 10.9.1 
+COPY ./installationoCc.sh /
+RUN chmod +x /installationoCc.sh
+RUN bash -x ./installationoCc.sh
+
+
+
