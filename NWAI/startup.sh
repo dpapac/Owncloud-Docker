@@ -1,8 +1,10 @@
 #Start the database
+
 /etc/init.d/mysql restart
 sleep 5
 #Configure the Database
-mysql <<EOF
+
+mysql<<EOF
  CREATE USER IF NOT EXISTS 'dbadmin'@'localhost' IDENTIFIED BY 'password';
  GRANT ALL PRIVILEGES ON *.* TO 'dbadmin'@'localhost' WITH GRANT OPTION;
  FLUSH PRIVILEGES;
@@ -11,7 +13,7 @@ mysql <<EOF
 EOF
 
 #For occ maintenance
-/etc/init.d/redis-server restart
+/etc/init.d/redis-server
 /etc/init.d/apache2 restart
 sleep 5
 #Install ownCloud
