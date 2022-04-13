@@ -13,7 +13,7 @@ mysql<<EOF
 EOF
 
 #For occ maintenance
-/etc/init.d/redis-server
+/etc/init.d/redis-server restart
 /etc/init.d/apache2 restart
 sleep 5
 #Install ownCloud
@@ -51,3 +51,5 @@ occ config:system:set \
 
 echo "The installation was finished, your current installed Version is:"
 occ status
+
+while true ; do sleep 900 ; done

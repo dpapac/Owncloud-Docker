@@ -72,6 +72,7 @@ a2enmod dir env headers mime rewrite setenvif
 cd /var/www/
 wget -q https://download.owncloud.org/community/owncloud-complete-latest.tar.bz2 && \
 tar -xjf owncloud-complete-latest.tar.bz2 && \
+#Ensure that permissions are correct
 chown -R www-data. owncloud
 
 #Sets Up a Cron Job
@@ -93,8 +94,3 @@ sudo cat <<EOM >$FILE
   compresscmd /bin/gzip
 }
 EOM
-
-#Ensure that permissions are correct
-
-cd /var/www/
-chown -R www-data. owncloud

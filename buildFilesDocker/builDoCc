@@ -8,19 +8,13 @@ EXPOSE 6379
 ENV DEBIAN_FRONTEND noninteractive
 
 #Update your System
-
 RUN apt update
 
-#RUN apt install debconf-utils -y
+#Install online updates
 RUN DEBIAN_FRONTEND=noninteractive apt upgrade -y
 
-RUN apt install -y
-
-#Install sudo to enable running programs with security privileges
-RUN DEBIAN_FRONTEND=noninteractive apt install sudo cron -y
-
-#vim
-RUN DEBIAN_FRONTEND=noninteractive apt install vim -y
+#Install sudo to enable running programs with security privileges/ vim/ cron
+RUN DEBIAN_FRONTEND=noninteractive apt install sudo cron vim -y
 
 #ownCloud Quick Installation script 10.9.1 
 COPY ./installationoCc.sh /
