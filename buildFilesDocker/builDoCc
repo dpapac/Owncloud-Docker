@@ -19,8 +19,10 @@ RUN DEBIAN_FRONTEND=noninteractive apt install sudo cron vim -y
 #ownCloud Quick Installation script 10.9.1 
 COPY ./installationoCc.sh /
 COPY ./startup.sh /
+COPY ./themeSetupDocker.sh /
 RUN chmod +x /installationoCc.sh
 RUN chmod +x /startup.sh
+RUN chmod +x /themeSetupDocker.sh
 RUN bash -x ./installationoCc.sh
 
 #Install ownCloud

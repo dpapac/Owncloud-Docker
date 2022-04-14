@@ -24,7 +24,10 @@ sudo chown -R www-data: dockerThemes
 #Enable Themes
 occ app:enable dockerThemes
 
-#'integrity.ignore.missing.app.signature' => [
-#       'mynewtheme',
-#],
+#Avoid a signature warning in the ownCloud UI
+cat << EOF >> /var/www/owncloud/config/config.php
+'integrity.ignore.missing.app.signature' => [
+       'dockerThemes',
+],
+EOF
 
