@@ -62,10 +62,6 @@ occ config:system:set \
 echo "The installation was finished, your current installed Version is:"
 occ status
 
-chmod +x ./themeSetupDocker.sh
-pwd
-exec ./themeSetupDocker.sh
-
 #Loop for processes 
 while true ; do sleep 900 ; done
 
